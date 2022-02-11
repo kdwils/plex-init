@@ -2,13 +2,14 @@ name: Build and Push Image
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
 env:
   IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    environment: Homelab
     steps:
       - name: check out the repo
         uses: actions/checkout@v2
@@ -27,5 +28,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.IMAGE_NAME }}:${{github.SHA}}
           labels: ${{ steps.meta.outputs.labels }}

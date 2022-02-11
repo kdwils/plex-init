@@ -7,7 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: Homelab
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag kdwilson/pushshift-api:latest
+      run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USERNAME}}/${{ github.event.repository.name }}:latest
