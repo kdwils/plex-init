@@ -7,7 +7,7 @@ RUN go mod download
 
 COPY . ./
 
-ENV GOARCH linux
+ENV GOARCH amd64
 
 RUN go mod download
 
