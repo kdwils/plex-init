@@ -21,7 +21,7 @@ When running inside of a container in a kubernetes cluster, you do not need to s
 If a kube-config is specified then that will be used instead of the in cluster config.
 
 ```
-plex-init claim token --secret-name=<name-of-secret-to-create> --secret-namespace=<namespace-to-create-secretin>
+plex-init claim token --secret-name=<name-of-secret-to-create> --namespace=<namespace-to-create-secret-in>
 ```
 
 ## Init container in a cluster
