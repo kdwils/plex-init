@@ -7,8 +7,6 @@ RUN go mod download
 
 COPY . ./
 
-ENV GOARCH amd64
-
 RUN go mod download
 
 RUN go build -o plex-init .
