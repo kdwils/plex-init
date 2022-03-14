@@ -20,7 +20,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ github.REPOSITORY }}
+          images: kdwilson/plex-init
           tags: |
             type=schedule
             type=ref,event=branch
