@@ -35,7 +35,7 @@ jobs:
 
       - name: echo branch ref
         shell: bash
-        run: echo "$github.REF_NAME"
+        run: echo "${{ github.REF_NAME }}"
 
       - name: build and push Docker image
         uses: docker/build-push-action@v2
