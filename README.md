@@ -37,7 +37,7 @@ metadata:
   namespace: media
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: Role
 metadata:
   name: plex-init-cluster-role
   namespace: media
@@ -49,9 +49,10 @@ rules:
     verbs: ["create", "update", "get"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+kind: RoleBinding
 metadata:
   name: plex-init-cluster-role-binding
+  namespace: media
 subjects:
 - namespace: media 
   kind: ServiceAccount
