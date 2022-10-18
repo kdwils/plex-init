@@ -15,8 +15,6 @@ var (
 	kubePath        string
 	secretName      string
 	secretNamespace string
-	scheme          string
-	host            string
 )
 
 // tokenCmd represents the token command
@@ -25,7 +23,7 @@ var tokenCmd = &cobra.Command{
 	Short: "claim your plex server token and create a kubernetes secret",
 	Long:  `claim your plex server token and create a kubernetes secret`,
 	Run: func(cmd *cobra.Command, args []string) {
-		c := plex.NewClient(scheme, host, http.DefaultClient)
+		c := plex.NewClient(http.DefaultClient)
 		ctx := context.Background()
 		plextoken := viper.GetString("PLEX_TOKEN")
 		claimToken, err := c.GetServerClaimToken(ctx, plextoken)
@@ -52,6 +50,4 @@ func init() {
 	tokenCmd.Flags().StringVar(&kubePath, "kube-config", "", "path to kubeconfig")
 	tokenCmd.Flags().StringVar(&secretName, "secretName", "plex", "path to kubeconfig")
 	tokenCmd.Flags().StringVar(&secretNamespace, "namespace", "default", "namespace to create the plex token secret in")
-	tokenCmd.Flags().StringVar(&scheme, "PLEX_SCHEME", "https", "http/https scheme")
-	tokenCmd.Flags().StringVar(&host, "PLEX_HOST", "plex.tv", "plex host address")
 }

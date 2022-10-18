@@ -19,10 +19,10 @@ type token struct {
 	Token string `json:"token"`
 }
 
-func NewClient(scheme, host string, client *http.Client) *Client {
+func NewClient(client *http.Client) *Client {
 	return &Client{
-		Scheme: scheme,
-		Host:   host,
+		Scheme: "https",
+		Host:   "plex.tv",
 		http:   client,
 	}
 }
